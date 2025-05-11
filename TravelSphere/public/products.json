@@ -1,0 +1,267 @@
+[
+    {
+      "id": 1,
+      "title": "Trek to the Himalayas",
+      "description": "Snow-capped peaks and scenic trails in the Indian Himalayas.",
+      "price": 299.99,
+      "image": "/images/himalayas.jpg",
+      "category": "Mountains"
+    },
+    {
+      "id": 2,
+      "title": "Manali Adventure",
+      "description": "Thrilling activities and breathtaking mountain views in Himachal.",
+      "price": 229.99,
+      "image": "/images/manali.jpg",
+      "category": "Mountains"
+    },
+    {
+      "id": 3,
+      "title": "Leh-Ladakh Biking Trip",
+      "description": "Ride through the majestic valleys of Ladakh.",
+      "price": 349.99,
+      "image": "/images/ladakh.jpg",
+      "category": "Mountains"
+    },
+    {
+      "id": 4,
+      "title": "Sikkim Escape",
+      "description": "Charming villages and Himalayan monasteries.",
+      "price": 199.99,
+      "image": "/images/sikkim.jpg",
+      "category": "Mountains"
+    },
+    {
+      "id": 5,
+      "title": "Kashmir Valley Tour",
+      "description": "Enjoy the beauty of Dal Lake and the Pir Panjal range.",
+      "price": 259.99,
+      "image": "/images/kashmir.jpg",
+      "category": "Mountains"
+    },
+    {
+      "id": 6,
+      "title": "Nainital & Mukteshwar",
+      "description": "Tranquil lakes and lush hills in Uttarakhand.",
+      "price": 179.99,
+      "image": "/images/nainital.jpg",
+      "category": "Mountains"
+    },
+    {
+      "id": 7,
+      "title": "Darjeeling Sunrise View",
+      "description": "Witness sunrise over Kanchenjunga at Tiger Hill.",
+      "price": 189.99,
+      "image": "/images/darjeeling.jpg",
+      "category": "Mountains"
+    },
+    {
+      "id": 8,
+      "title": "Mount Abu Getaway",
+      "description": "Rajasthan’s only hill station with serene vibes.",
+      "price": 149.99,
+      "image": "/images/mount-abu.jpg",
+      "category": "Mountains"
+    },
+    {
+      "id": 9,
+      "title": "Goa Beach Party",
+      "description": "Sun, sand, and nightlife on the Goan coast.",
+      "price": 199.99,
+      "image": "/images/goa.jpg",
+      "category": "Beaches"
+    },
+    {
+      "id": 10,
+      "title": "Andaman Islands",
+      "description": "Crystal-clear waters and scuba diving paradise.",
+      "price": 399.99,
+      "image": "/images/andaman.jpg",
+      "category": "Beaches"
+    },
+    {
+      "id": 11,
+      "title": "Kerala Backwaters & Beach",
+      "description": "Relaxing beaches and houseboat stays.",
+      "price": 289.99,
+      "image": "/images/kerala.jpg",
+      "category": "Beaches"
+    },
+    {
+      "id": 12,
+      "title": "Gokarna Beach Trek",
+      "description": "Hidden beaches and scenic coastal hikes.",
+      "price": 169.99,
+      "image": "/images/gokarna.jpg",
+      "category": "Beaches"
+    },
+    {
+      "id": 13,
+      "title": "Pondicherry Weekend",
+      "description": "French charm and calm beaches on the Bay of Bengal.",
+      "price": 149.99,
+      "image": "/images/pondicherry.jpg",
+      "category": "Beaches"
+    },
+    {
+      "id": 14,
+      "title": "Varanasi Spiritual Tour",
+      "description": "Explore ghats and ancient temples of Varanasi.",
+      "price": 189.99,
+      "image": "/images/varanasi.jpg",
+      "category": "Temples"
+    },
+    {
+      "id": 15,
+      "title": "Golden Temple Amritsar",
+      "description": "Experience serenity at the Golden Temple.",
+      "price": 159.99,
+      "image": "/images/amritsar.jpg",
+      "category": "Temples"
+    },
+    {
+      "id": 16,
+      "title": "Rameswaram Pilgrimage",
+      "description": "A sacred island with historic temples.",
+      "price": 179.99,
+      "image": "/images/rameswaram.jpg",
+      "category": "Temples"
+    },
+    {
+      "id": 17,
+      "title": "Tirupati Balaji Darshan",
+      "description": "Visit the world-famous hilltop temple in Andhra.",
+      "price": 149.99,
+      "image": "/images/tirupati.jpg",
+      "category": "Temples"
+    },
+    {
+      "id": 18,
+      "title": "Taj Mahal Tour",
+      "description": "Marvel at the iconic symbol of love in Agra.",
+      "price": 129.99,
+      "image": "/images/tajmahal.jpg",
+      "category": "Monuments"
+    },
+    {
+      "id": 19,
+      "title": "Jaipur Forts & Palaces",
+      "description": "Visit Amber Fort, City Palace, and more.",
+      "price": 179.99,
+      "image": "/images/jaipur.jpg",
+      "category": "Monuments"
+    },
+    {
+      "id": 20,
+      "title": "Hampi Heritage Walk",
+      "description": "Ancient ruins and UNESCO world heritage site.",
+      "price": 149.99,
+      "image": "/images/hampi.jpg",
+      "category": "Monuments"
+    },
+    {
+      "id": 21,
+      "title": "Khajuraho Temples",
+      "description": "Intricate carvings and historical marvels.",
+      "price": 139.99,
+      "image": "/images/khajuraho.jpg",
+      "category": "Monuments"
+    },
+    {
+      "id": 22,
+      "title": "Delhi Historical Circuit",
+      "description": "Red Fort, Qutub Minar, and Humayun's Tomb.",
+      "price": 169.99,
+      "image": "/images/delhi.jpg",
+      "category": "Monuments"
+    },
+    {
+      "id": 23,
+      "title": "Mysore Palace Tour",
+      "description": "Explore the grandeur of royal Mysore.",
+      "price": 119.99,
+      "image": "/images/mysore.jpg",
+      "category": "Monuments"
+    },
+    {
+      "id": 24,
+      "title": "Konark Sun Temple",
+      "description": "Architectural brilliance in Odisha.",
+      "price": 129.99,
+      "image": "/images/konark.jpg",
+      "category": "Monuments"
+    },
+    {
+      "id": 25,
+      "title": "RShimla & Kufri Snow Trip",
+      "description": "rSnowfall, shopping, and cozy hills.",
+      "price": 189.99,
+      "image": "/images/shimla.jpg",
+      "category": "Recommended"
+    },
+    {
+      "id": 26,
+      "title": "RAlleppey Houseboat Cruise",
+      "description": "rRomantic and scenic boat ride in Kerala.",
+      "price": 219.99,
+      "image": "/images/alleppey.jpg",
+      "category": "Recommended"
+    },
+    {
+      "id": 27,
+      "title": "RAgra & Fatehpur Sikri",
+      "description": "rHistoric exploration with iconic Mughal architecture.",
+      "price": 149.99,
+      "image": "/images/fatehpursikri.jpg",
+      "category": "Recommended"
+    },
+    {
+      "id": 28,
+      "title": "RCoorg Coffee Trails",
+      "description": "rLush plantations and waterfalls in Karnataka.",
+      "price": 179.99,
+      "image": "/images/coorg.jpg",
+      "category": "Recommended"
+    },
+    {
+      "id": 29,
+      "title": "RRajasthan Desert Safari",
+      "description": "rCamel rides and traditional folk shows in Jaisalmer.",
+      "price": 199.99,
+      "image": "/images/jaisalmer.jpg",
+      "category": "Recommended"
+    },
+    {
+      "id": 30,
+      "title": "RMunnar Tea Estates",
+      "description": "rGreen hills and misty mornings in Kerala.",
+      "price": 169.99,
+      "image": "/images/munnar.jpg",
+      "category": "Recommended"
+    },
+    {
+      "id": 31,
+      "title": "ROoty Botanical Gardens",
+      "description": "rHill station charm with scenic gardens.",
+      "price": 159.99,
+      "image": "/images/ooty.jpg",
+      "category": "Recommended"
+    },
+    {
+      "id": 32,
+      "title": "RUdaipur City of Lakes",
+      "description": "rRomantic palaces and lakeside serenity.",
+      "price": 179.99,
+      "image": "/images/udaipur.jpg",
+      "category": "Recommended"
+    },
+    {
+      "id": 33,
+      "title": "RMahabalipuram Shore Temple",
+      "description": "rSeaside ancient architecture and rock carvings.",
+      "price": 149.99,
+      "image": "/images/mahabalipuram.jpg",
+      "category": "Recommended"
+    }
+  ]
+  
