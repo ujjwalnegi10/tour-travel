@@ -194,10 +194,10 @@ export const DestinationSelector = () => {
                       alignItems: 'center',
                     }}
                   >
-                    <Container
-                      onClose={() => setShowContainer(false)} // Close the container
-                      product={selectedImage} // Pass the product data here
-                    />
+                            <Container
+                     onClose={() => setShowContainer(false)}
+                     productId={selectedImage.id}
+                   />
                   </div>
                 </div>
               )}
@@ -209,7 +209,9 @@ export const DestinationSelector = () => {
                 setShowContainer(true);    // Show container
 
               }}
-              description={image.description}
+              img1={image.img1}
+        img2={image.img2}
+        title={image.title}
             />
           </React.Fragment>
         ))}

@@ -1,7 +1,9 @@
+
+
 [
     {
       "id": 1,
-      "title": "Trek to the Himalayas",
+      "title": " Himalayas",
       "description": "Snow-capped peaks and scenic trails in the Indian Himalayas.",
       "price": 299.99,
       "image": "/images/himalayas.jpg",
@@ -221,6 +223,8 @@
       "description": "rLush plantations and waterfalls in Karnataka.",
       "price": 179.99,
       "image": "/images/coorg.jpg",
+    
+
       "category": "Recommended"
     },
     {

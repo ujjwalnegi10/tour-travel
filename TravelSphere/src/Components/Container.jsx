@@ -10,104 +10,69 @@ import { WishlistContext } from "../Context/WishlistContext.jsx";
 import { Heart, ShoppingCart, Trash2 } from "lucide-react";
 
 
-export const Container = ({ onClose, product }) => {
+export const Container = ({ onClose, productId }) => {
+  const [product, setProduct] = useState(null);
+  const [wishlist, setWishlist] = useState([]);
+  const [cart, setCart] = useState([]);
 
-  const activities = [
-    "City Sightseeing",
-    "Adventure Sports",
-    "Local Food Tasting",
-    "Cultural Experiences",
-    "Beach Relaxation",
-    "Hiking & Trekking",
-    "Wildlife Safaris",
-    "Historic Site Visits",
-    "Boat Cruises",
-    "Shopping in Local Markets"
-  ];
-  const [wishlist, setWishlist] = useState([])
-  const [cart, setCart] = useState([])
-
-  // Load data from localStorage on component mount
   useEffect(() => {
-    const savedWishlist = JSON.parse(localStorage.getItem("wishlist") || "[]")
-    const savedCart = JSON.parse(localStorage.getItem("cart") || "[]")
-    setWishlist(savedWishlist)
-    setCart(savedCart)
-  }, [])
+    const savedWishlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
+    const savedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    setWishlist(savedWishlist);
+    setCart(savedCart);
+  }, []);
 
-  // Helper function to trigger localStorage change event
   const triggerStorageEvent = () => {
-    window.dispatchEvent(new Event("localStorageChange"))
-  }
+    window.dispatchEvent(new Event("localStorageChange"));
+  };
 
-  // Add to wishlist
   const toggleWishlist = (product) => {
     const isWishlisted = wishlist.some((item) => item.id === product.id);
-    let updatedWishlist;
-  
-    if (isWishlisted) {
-      updatedWishlist = wishlist.filter((item) => item.id !== product.id);
-    } else {
-      updatedWishlist = [...wishlist, product];
-    }
-  
+    const updatedWishlist = isWishlisted
+      ? wishlist.filter((item) => item.id !== product.id)
+      : [...wishlist, product];
     setWishlist(updatedWishlist);
     localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
     triggerStorageEvent();
   };
-  
 
-  // Add to cart
   const toggleCart = (product) => {
-    const isInCartAlready = cart.some((item) => item.id === product.id);
-    let updatedCart;
-  
-    if (isInCartAlready) {
-      updatedCart = cart.filter((item) => item.id !== product.id);
-    } else {
-      updatedCart = [...cart, product];
-    }
-  
+    const isInCart = cart.some((item) => item.id === product.id);
+    const updatedCart = isInCart
+      ? cart.filter((item) => item.id !== product.id)
+      : [...cart, product];
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
     triggerStorageEvent();
   };
-  
-  // Check if product is in wishlist
-  const isInWishlist = (productId) => {
-    return wishlist.some((item) => item.id === productId)
-  }
 
-  // Check if product is in cart
-  const isInCart = (productId) => {
-    return cart.some((item) => item.id === productId)
-  }
+  const isInWishlist = (productId) => wishlist.some((item) => item.id === productId);
+  const isInCart = (productId) => cart.some((item) => item.id === productId);
 
-
-
-  const [offsetY, setOffsetY] = useState(0);
-
-
-
-  const [newRating, setNewRating] = useState(0);
-
+  // Load the product from JSON using productId
   useEffect(() => {
-    const handleScroll = () => setOffsetY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    fetch("http://localhost:5000/products")
+      .then((res) => res.json())
+      .then((data) => {
+        const matched = data.find((item) => item.id === productId);
+        setProduct(matched);
+      })
+      .catch((err) => console.error("Error loading product data:", err));
+  }, [productId]);
 
-  const predefinedComments = [
-    "This place is amazing! Highly recommend.",
-    "Very clean and the service was excellent."
-  ];
+  // Default values if product hasn't loaded yet
+ 
 
+  // UI states
   const [checkInDate, setCheckInDate] = useState(null);
   const [checkOutDate, setCheckOutDate] = useState(null);
   const [numDays, setNumDays] = useState(7);
   const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(0);
   const [rooms, setRooms] = useState(1);
+  const [newComment, setNewComment] = useState("");
+  const [newRating, setNewRating] = useState(0);
+  const [comments, setComments] = useState([]);
   const [ratingCount, setRatingCount] = useState({
     excellent: 240,
     veryGood: 51,
@@ -115,18 +80,26 @@ export const Container = ({ onClose, product }) => {
     poor: 1,
     terrible: 0,
   });
-  const [newComment, setNewComment] = useState("");
-  const [comments, setComments] = useState([]);
+ if (!product) {
+    return <div className="p-10 text-center text-xl">Loading...</div>;
+  }
 
-  const handleRating = (star) => {
-    setNewRating(star);
-  };
+  // UI states
+  const activities = [
+    "City Sightseeing", "Adventure Sports", "Local Food Tasting",
+    "Cultural Experiences", "Beach Relaxation", "Hiking & Trekking",
+    "Wildlife Safaris", "Historic Site Visits", "Boat Cruises", "Shopping in Local Markets"
+  ];
+
+  const predefinedComments = [
+    "This place is amazing! Highly recommend.",
+    "Very clean and the service was excellent."
+  ];
 
   const handleAddComment = () => {
     if (newComment.trim() !== "") {
       setComments([newComment, ...comments]);
       setNewComment("");
-
       setRatingCount((prev) => ({
         ...prev,
         excellent: prev.excellent + (newRating === 5 ? 1 : 0),
@@ -156,17 +129,18 @@ export const Container = ({ onClose, product }) => {
       });
     }
     return [];
-  }
+  };
+
   return (
     <div className="flex flex-col w-full h-screen overflow-y-auto pt-10 bg-gradient-to-t from-amber-100 to-purple-200">
       <div className="flex flex-col justify-center items-center w-full">
         <div className="flex w-[90%] h-full gap-10 relative">
           <div className="flex-1 space-y-6">
             <div className="border w-full h-[400px]">
-              <div className="h-full bg-gray-100 flex items-center justify-center w-full">image</div>
+              <div className="h-full bg-gray-100 flex items-center justify-center w-full">{product.containerimage}</div>
             </div>
             <div className=" w-full flex justify-between">   
-              <div className="text-3xl pl-2">name of place</div>
+              <div className="text-3xl pl-2">{product.name}</div>
               <button
   onClick={() => toggleWishlist(product)}
   className="p-2 rounded-full transition-colors duration-300 hover:scale-110"
@@ -298,7 +272,7 @@ export const Container = ({ onClose, product }) => {
             <button onClick={onClose} className="absolute -right-13 -top-17 text-4xl font-bold">X</button>
             <div className="w-full space-y-4 rounded-2xl z-10 bg-white p-4 pt-6">
               <div className="border w-full rounded-xl">
-                <div className="h-48 bg-gray-100 flex items-center justify-center rounded-xl">hotel room image</div>
+                <div className="h-48 bg-gray-100 flex items-center justify-center rounded-xl"><img src={product.hotelimage}/></div>
               </div>
               <div className="flex justify-around">
                 <span className="text-[#361c0a] px-2">AC</span>
@@ -306,7 +280,7 @@ export const Container = ({ onClose, product }) => {
                 <span className="text-[#361c0a] px-2">wifi</span>
               </div>
               <div className="pl-2">
-                <p className="text-[#54331c]">Number of days: {numDays}</p>
+                <p className="text-[#54331c]">Number of days: {product.numDays}</p>
               </div>
               <div className="p-2 mb-1">
                 <span>Check-in</span>
@@ -334,7 +308,7 @@ export const Container = ({ onClose, product }) => {
                 </div>
               ))}
               <div className="p-2 text-xl">
-                <p>Price</p>
+                <p>Price: {product.price}</p>
               </div>
               <div className="flex justify-center p-2">
 

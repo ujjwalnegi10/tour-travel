@@ -2,7 +2,7 @@
 import img2 from '../assets/bg.jpg';
 import img3 from '../assets/bg3.jpg';
 
-export const ImageContainer2 = ({onClick}) => {
+export const ImageContainer2 = ({onClick ,img1 ,img2 ,title}) => {
     return (
         <>
             <div
@@ -10,7 +10,10 @@ export const ImageContainer2 = ({onClick}) => {
                 onClick={onClick} >
                 <div className="w-[265px] h-[90%]  relative flex  ">
                     <div className="absolute w-[245px] flex flex-col h-[315px] left-5 shadow-xl/30 border-2 border-emerald-900  opacity-0 transition-transform rounded-tl-xl rounded-tr-xl rotate-5
-                        duration-300 group-hover:scale-103 group-hover:translate-x-2.5 group-hover:-translate-y-11 group-hover:opacity-100">
+                        duration-300 group-hover:scale-103 group-hover:translate-x-2.5 group-hover:-translate-y-11 group-hover:opacity-100"
+                         style={{
+        backgroundImage: `url(${img2})`
+      }}>
                         {/* <img src={img3} className="w-full h-full rounded-xl" alt="img3" /> */}
                         <div className="absolute w-[80px] h-[80px] self-end -right-8 -top-8 bg-[url('./assets/off.png')] bg-center bg-cover m-1 rounded-full"></div>
 
@@ -18,7 +21,7 @@ export const ImageContainer2 = ({onClick}) => {
 
                     <div className="group absolute w-full h-9/10  rounded-2xl shadow-xl/30 overflow-hidden transition-transform duration-500 group-hover:-translate-x-2 group-hover:-rotate-2">
                         <img
-                            src={img3}ss
+                            src={img1}
                             alt="img3"
                             className="w-full h-full rounded-2xl object-cover transition-transform duration-800 group-hover:scale-110"
                         />
@@ -28,7 +31,7 @@ export const ImageContainer2 = ({onClick}) => {
                 <div className="h-[5%] text-xl italic w-1/2 self-center ml-2">
                     <span className="h-full px-4 relative">
                         <span className="relative z-10 group-hover:text-2xl text-cyan-900 text-shadow-lg text-shadow-blue">
-                            kotdwar
+                            {title}
                         </span>
                     </span>
                 </div>

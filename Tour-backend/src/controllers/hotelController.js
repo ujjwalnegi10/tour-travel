@@ -3,36 +3,33 @@ const cloudinary = require('../config/cloudinary');
 
 exports.createHotel = async (req, res) => {
   try {
-    const { name, location, description, price } = req.body;
+    const { name, description, price } = req.body;
 
-    // Check if file is uploaded
     if (!req.file) {
-      return res.status(400).json({ message: 'No image file uploaded' });
+      return res.status(400).json({ message: 'Image file is required' });
     }
 
-    // Upload file to Cloudinary
-    const uploadResult = await cloudinary.uploader.upload(req.file.path, {
-      folder: 'hotels', // Optional: to organize uploads
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      folder: 'hotels',
     });
 
-    // Create new hotel
     const newHotel = new Hotel({
       name,
-      location,
       description,
       price,
-      image: uploadResult.secure_url, // Save Cloudinary URL
+      image: result.secure_url,
     });
 
     await newHotel.save();
 
     res.status(201).json({
       success: true,
+      message: 'Hotel created successfully',
       data: newHotel,
     });
   } catch (error) {
-    console.error('Error creating hotel:', error);
-    res.status(500).json({ message: error.message });
+    console.error('Create Hotel Error:', error);
+    res.status(500).json({ message: 'Server Error', error: error.message });
   }
 };
 
@@ -45,7 +42,20 @@ exports.getHotels = async (req, res) => {
       data: hotels,
     });
   } catch (error) {
-    console.error('Error getting hotels:', error);
-    res.status(500).json({ message: error.message });
+    console.error('Get Hotels Error:', error);
+    res.status(500).json({ message: 'Server Error', error: error.message });
+  }
+};
+
+exports.getHotelById = async (req, res) => {
+  try {
+    const hotel = await Hotel.findById(req.params.id);
+    if (!hotel) {
+      return res.status(404).json({ message: 'Hotel not found' });
+    }
+
+    res.status(200).json({ success: true, data: hotel });
+  } catch (error) {
+    res.status(500).json({ message: 'Server Error', error: error.message });
   }
 };

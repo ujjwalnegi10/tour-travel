@@ -1,13 +1,20 @@
 const express = require('express');
-const { createHotel, getHotels } = require('../controllers/hotelController');
-const { protect } = require('../middlewares/authMiddleware');
-const upload = require('../middlewares/uploadMiddleware');
 const router = express.Router();
+const upload = require('../middlewares/uploadMiddleware');
 
-// Create a new hotel (Protected + Image Upload)
-router.post('/create',upload.single('image'), createHotel);
+const {
+  createHotel,
+  getHotels,
+  getHotelById,
+} = require('../controllers/hotelController');
 
-// Get all hotels (Public)
+// GET all hotels
 router.get('/', getHotels);
+
+// GET hotel by ID
+router.get('/:id', getHotelById);
+
+// POST create new hotel (with image upload)
+router.post('/create', upload.single('image'), createHotel);
 
 module.exports = router;

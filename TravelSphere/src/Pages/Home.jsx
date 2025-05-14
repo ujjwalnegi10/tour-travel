@@ -1,4 +1,4 @@
-
+//id , 2 image bhar  tittle 
 import { useState, useRef, useEffect } from "react";
 import { ImageContainer } from "../Components/ImageContainer";
 import { PageTorn } from "../Components/PageTorn";
@@ -19,8 +19,11 @@ import { Footer } from "../Components/Footer";
 import { Carousel } from "../Components/Carousel";
 import { useNavigate } from 'react-router-dom';
 
+
+
+
 export const HomePage = () => {
-  const [selectedImage, setSelectedImage] = useState(null); // To hold clicked image info
+ // To hold clicked image info
 
   const [showContainer, setShowContainer] = useState(false);
   const [hovered, setHovered] = useState(false);
@@ -74,7 +77,7 @@ export const HomePage = () => {
   ];
   ;
 
-
+ const [selectedImage, setSelectedImage] = useState(null); 
   const [pdata, setdata] = useState([]);
 
   useEffect(() => {
@@ -253,45 +256,47 @@ export const HomePage = () => {
 
 
 
-          {/* Grid Layout */}
-          <div className="grid grid-cols-3 lg:gap-4 gap-2 lg:px-0 px-4  mb-2 lg:mb-10 relative">
-            {product.map((image, index) => (
-              <React.Fragment key={image.id}>
-
-                {/* Conditionally render the full-page Container above the clicked card */}
-                {showContainer && selectedImage?.id === image.id
-                  && (
-                    <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-center items-center">
-                      <div
-                        className="bg-white w-full h-full"
-                        style={{
-                          maxWidth: '100%',
-                          maxHeight: '100%',
-                          display: 'flex',
-                          justifyContent: 'center',
-                          alignItems: 'center',
-                        }}
-                      >
-                        <Container
-                          onClose={() => setShowContainer(false)} // Close the container
-                          product={selectedImage} // Pass the product data here
-                        />
-                      </div>
-                    </div>
-                  )}
 
 
-                <ImageContainer
-                  onClick={() => {
-                    setSelectedImage(image);   // Store clicked image data
-                    setShowContainer(true);    // Show container
 
-                  }}
-                  description={image.description}
-                />
-              </React.Fragment>
-            ))}
+    <div className="grid grid-cols-3 lg:gap-4 gap-2 lg:px-0 px-4 mb-2 lg:mb-10 relative">
+  {product.map((image, index) => (
+    <React.Fragment key={image.id}>
+      {/* Conditionally render the full-page Container */}
+      {showContainer && selectedImage?.id === image.id && (
+        <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-center items-center">
+          <div
+            className="bg-white w-full h-full"
+            style={{
+              maxWidth: '100%',
+              maxHeight: '100%',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+         <Container
+  onClose={() => setShowContainer(false)}
+  productId={selectedImage.id}
+/>
+
           </div>
+        </div>
+      )}
+
+      {/* Pass images to ImageContainer */}
+      <ImageContainer
+        onClick={() => {
+          setSelectedImage(image);
+          setShowContainer(true);
+        }}
+        img1={image.img1}
+        img2={image.img2}
+        title={image.title}
+      />
+    </React.Fragment>
+  ))}
+</div>
 
 
           <button className="self-end lg:mt-4 mt-1 mr-5 lg:mr-15 italic bg-emerald-700 mb-2 text-white lg:px-6 px-2 py-1 lg:py-2 text-sm lg:text-lg rounded hover:bg-cyan-600 transition-colors cursor-pointer" onClick={handleClick}>

@@ -1,8 +1,20 @@
 const express = require('express');
-const { createDestination, getDestinations } = require('../controllers/destinationController');
 const router = express.Router();
+const upload = require('../middlewares/uploadMiddleware');
 
-router.post('/', createDestination);
+const {
+  createDestination,
+  getDestinations,
+  getDestinationById,
+} = require('../controllers/destinationController');
+
+// GET all destinations
 router.get('/', getDestinations);
+
+// GET destination by ID
+router.get('/:id', getDestinationById);
+
+// POST create new destination (with image upload)
+router.post('/create', upload.single('image'), createDestination);
 
 module.exports = router;
